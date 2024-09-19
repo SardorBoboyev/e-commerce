@@ -1,6 +1,8 @@
 package uz.pdp.final_project_backend.domain.enumerators;
 
-public enum UserRole {
-    ADMIN,
-    USER
+public enum PaymentType {
+
+    UZCARD,
+    HUMO,
+    VISA
 }
