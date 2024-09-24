@@ -1,5 +1,6 @@
 package uz.pdp.e_commerce.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import uz.pdp.e_commerce.domain.projection.JwtInfo;
@@ -10,14 +11,15 @@ import uz.pdp.e_commerce.service.user.AuthService;
 
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/auth")
 public class AuthController {
 
-    @Autowired
-    private AuthService authService;
+
+    private final AuthService authService;
 
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     private JwtInfo login(@RequestBody LoginRequest loginRequest) {
         return authService.login(loginRequest);
     }

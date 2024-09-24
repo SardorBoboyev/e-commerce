@@ -15,9 +15,15 @@ public interface UserService {
     UserEntity findByUsername(String username);
 
     UserInfo save(UserRequest user);
+
     UserInfo update(Long id, UserRequest user);
+
     UserEntity findById(Long id);
+
     void deleteById(Long id);
+
     List<UserInfo> findAll();
+
+    List<UserInfo> searchUser(String text);
 
 }

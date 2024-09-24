@@ -19,8 +19,6 @@ public class ProductRequest {
 
     private Long categoryId;
 
-    private Long userId;
-
     private Double price;
 
     private String imagePath;

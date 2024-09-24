@@ -1,5 +1,6 @@
 package uz.pdp.e_commerce.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import uz.pdp.e_commerce.domain.projection.UserInfo;
@@ -10,11 +11,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
+@RequiredArgsConstructor
 public class UserController {
 
 
-    @Autowired
-    private UserServiceImpl userServiceImpl;
+
+    private final UserServiceImpl userServiceImpl;
 
     @PostMapping
     public UserInfo createUser(@RequestBody UserRequest user) {
