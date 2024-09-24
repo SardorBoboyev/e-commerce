@@ -9,9 +9,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import uz.pdp.e_commerce.domain.entity.UserEntity;
 import uz.pdp.e_commerce.domain.exception.BaseException;
+import uz.pdp.e_commerce.domain.projection.BasketInfo;
 import uz.pdp.e_commerce.domain.projection.UserInfo;
 import uz.pdp.e_commerce.domain.request.UserRequest;
+import uz.pdp.e_commerce.repository.BasketRepository;
 import uz.pdp.e_commerce.repository.UserRepository;
+import uz.pdp.e_commerce.service.basket.BasketService;
 
 import java.util.List;
 import java.util.UUID;
@@ -26,6 +29,8 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
 
     private final ModelMapper modelMapper;
+    private final BasketRepository basketRepository;
+    private final BasketService basketService;
 
 
     @Override
@@ -41,6 +46,7 @@ public class UserServiceImpl implements UserService {
                 .password(passwordEncoder.encode(user.getPassword()))
                 .role(user.getRole())
                 .build();
+        basketService.save(userEntity);
         UserEntity entity = userRepository.save(userEntity);
         return modelMapper.map(entity, UserInfo.class);
     }
