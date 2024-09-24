@@ -26,5 +26,4 @@ public interface ProductInfo {
 
     CategoryEntity getCategory();
 
-    UserEntity getUser();
 }

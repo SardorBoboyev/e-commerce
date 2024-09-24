@@ -1,5 +1,6 @@
 package uz.pdp.e_commerce.domain.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.*;
 
@@ -11,5 +12,6 @@ import lombok.*;
 
 @Entity(name = "categories")
 public class CategoryEntity extends BaseEntity {
+    @Column(unique = true, nullable = false)
     private String categoryName;
 }

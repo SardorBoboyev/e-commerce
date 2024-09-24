@@ -1,10 +1,12 @@
 package uz.pdp.e_commerce.service.user;
 
+import lombok.RequiredArgsConstructor;
 import org.apache.catalina.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 import uz.pdp.e_commerce.domain.entity.UserEntity;
 import uz.pdp.e_commerce.domain.exception.BaseException;
 import uz.pdp.e_commerce.domain.projection.UserInfo;
@@ -15,14 +17,15 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-    @Autowired
-    private ModelMapper modelMapper;
+
+    private final UserRepository userRepository;
+
+    private final PasswordEncoder passwordEncoder;
+
+    private final ModelMapper modelMapper;
 
 
     @Override
@@ -66,6 +69,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserInfo> findAll() {
         return userRepository.findAllBy();
+    }
+
+    @Override
+    public List<UserInfo> searchUser(String text) {
+        return userRepository.searchUser(text);
     }
 
     @Override
